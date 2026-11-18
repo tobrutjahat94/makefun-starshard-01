@@ -147,6 +147,12 @@ export function stepEnemy(enemy, dt, player, rng, events) {
   if (enemy.x > FIELD.width + 60) enemy.x = FIELD.width + 60;
   if (enemy.y < -60) enemy.y = -60;
   if (enemy.y > FIELD.height + 60) enemy.y = FIELD.height + 60;
+  // Spitters hold range, so once they have had time to enter, keep them inside the
+  // arena where bullets can reach them: no wave stalls on an unreachable spitter.
+  if (enemy.kind === 'spitter' && enemy.spawnT > 1.5) {
+    enemy.x = Math.min(FIELD.width - 20, Math.max(20, enemy.x));
+    enemy.y = Math.min(FIELD.height - 20, Math.max(20, enemy.y));
+  }
 }
 
 function stepBoss(boss, dt, player, rng, events, dist, dx, dy) {
@@ -186,7 +192,7 @@ function stepBoss(boss, dt, player, rng, events, dist, dx, dy) {
   // Radial burst, the boss's signature.
   boss.fireTimer -= dt;
   if (boss.fireTimer <= 0) {
-    boss.fireTimer = boss.phase === 3 ? 1.7 : boss.phase === 2 ? 2.1 : 2.5;
+    boss.fireTimer = boss.phase === 3 ? 1.35 : boss.phase === 2 ? 1.8 : 2.2;
     const count = boss.phase === 1 ? 10 : 14;
     const baseAngle = rng.angle();
     for (let i = 0; i < count; i += 1) {
@@ -202,7 +208,7 @@ function stepBoss(boss, dt, player, rng, events, dist, dx, dy) {
   if (boss.phase >= 2) {
     boss.spiralTimer -= dt;
     if (boss.spiralTimer <= 0) {
-      boss.spiralTimer = boss.phase === 3 ? 0.16 : 0.24;
+      boss.spiralTimer = boss.phase === 3 ? 0.13 : 0.2;
       const a = boss.spiralTimer * 0 + (boss.spawnT * 2.4);
       events.shots.push({ x: boss.x, y: boss.y, angle: a, speed: 200, damage: 9 });
       events.shots.push({ x: boss.x, y: boss.y, angle: a + Math.PI, speed: 200, damage: 9 });

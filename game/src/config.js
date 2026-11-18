@@ -50,7 +50,7 @@ export const ENEMY = {
   spitter: { hp: 26, speed: 72, radius: 15, damage: 8, score: 15, shards: [2, 3], keepRange: 270, fireEvery: 2.3, bulletSpeed: 230 },
   dasher: { hp: 16, speed: 84, radius: 13, damage: 12, score: 15, shards: [1, 2], telegraph: 0.55, lungeSpeed: 540, lungeEvery: 2.6 },
   brute: { hp: 95, speed: 46, radius: 26, damage: 18, score: 30, shards: [3, 5] },
-  boss: { hp: 1500, speed: 52, radius: 54, damage: 25, score: 1000, shards: [20, 20] },
+  boss: { hp: 3500, speed: 52, radius: 54, damage: 25, score: 1000, shards: [20, 20] },
 };
 
 export const ELITE_MULT = { hp: 2.3, size: 1.35, score: 3, speed: 1.05 };
@@ -64,9 +64,9 @@ export const WAVES = [
   { drifter: 16, spitter: 6, dasher: 6, brute: 1, elite: 1, spawnEvery: 0.9, name: 'HEAVY METAL' },
   { drifter: 18, spitter: 8, dasher: 8, brute: 2, elite: 1, spawnEvery: 0.85, name: 'THE SWARM THICKENS' },
   { drifter: 20, spitter: 10, dasher: 10, brute: 3, elite: 2, spawnEvery: 0.8, name: 'NO QUIET SECTOR' },
-  { drifter: 22, spitter: 12, dasher: 12, brute: 4, elite: 2, spawnEvery: 0.75, name: 'SIEGE' },
-  { drifter: 24, spitter: 14, dasher: 14, brute: 5, elite: 3, spawnEvery: 0.7, name: 'THE TIDE TURNS' },
-  { drifter: 26, spitter: 16, dasher: 16, brute: 6, elite: 3, spawnEvery: 0.65, name: 'LAST LIGHT' },
+  { drifter: 26, spitter: 14, dasher: 14, brute: 5, elite: 3, spawnEvery: 0.65, name: 'SIEGE' },
+  { drifter: 30, spitter: 17, dasher: 17, brute: 7, elite: 4, spawnEvery: 0.58, name: 'THE TIDE TURNS' },
+  { drifter: 34, spitter: 20, dasher: 20, brute: 8, elite: 5, spawnEvery: 0.5, name: 'LAST LIGHT' },
   { drifter: 0, spitter: 0, dasher: 0, brute: 0, elite: 0, spawnEvery: 1.0, name: 'THE WARDEN', boss: true },
 ];
 
